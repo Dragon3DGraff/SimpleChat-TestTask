@@ -4,7 +4,7 @@ Follow my [blog](https://dragon3dgraff.ru/en/ "dragon3dgraff.ru")
 
 #Multi-room chat using Socket.io, Node.js, Express and React
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Y2wmLh8np-4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![SimpleChat-TestTask](https://i9.ytimg.com/vi/Y2wmLh8np-4/mq2.jpg?sqp=COTps_sF&rs=AOn4CLDfmNyB0c_qiWy9W_ckR6p1rLaLqw)](https://youtu.be/Y2wmLh8np-4 "SimpleChat-TestTask")
 
 
 License
