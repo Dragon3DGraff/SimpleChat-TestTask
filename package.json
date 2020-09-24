@@ -1,0 +1,28 @@
+{
+  "name": "simplechat-testtask",
+  "version": "1.0.0",
+  "description": "Simple chat using Socket.io and React as a test task",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [
+    "Socket.io",
+    "React"
+  ],
+  "author": "Dragon3DGraff",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.4"
+  }
+}
