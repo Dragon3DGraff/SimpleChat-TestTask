@@ -24,6 +24,15 @@ async function start() {
 			res.json(roomsObj);
 		});
 
+		// preparing for production
+		if (process.env.NODE_ENV === 'production') {
+			app.use('/', express.static(path.join(__dirname, 'client', 'build')))
+			
+			app.get('*', (req, res) => {
+				res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+			})
+		}
+
 		//Create new room
 		app.post('/rooms', (req, res) => {
 			const {author, nameOfRoom} = req.body;

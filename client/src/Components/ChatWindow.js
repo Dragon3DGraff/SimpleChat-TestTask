@@ -85,10 +85,6 @@ function ChatWindow({author, roomName}) {
 		setChatStyle('ChatWindow');
 	}
 
-	function onClickLeave() {
-
-	}
-
 	return(
 		<div className={chatStyle} >
 			<div className="Chat-messages">
