@@ -28,8 +28,6 @@ function HomePage(props) {
 				</div>
 			</div>
 		</div>
-		
-	
 	)
 }
 

@@ -16,6 +16,7 @@ function Chats({author, onRoomCreate, pathname}) {
 
 	useEffect( () => {
 		loadRooms();
+		//add socket when room created
 		socket.on('room created', ()=>{
 			loadRooms();
 		})
@@ -55,7 +56,7 @@ function Chats({author, onRoomCreate, pathname}) {
 	return (
 		<div className="Chats-main">
 			<Chats-Head>
-					<div>You joined as <span className="Chats-TitleAuthor">{author}</span> </div>
+				<div>You joined as <span className="Chats-TitleAuthor">{author}</span> </div>
 				<br></br>
 				<input placeholder={"Enter name for new room"} className='Chats-inputNewRoom' value={nameOfRoom} onChange={onInputChange}></input>
 				<button onClick={onCreateRoomClick}>New room</button>

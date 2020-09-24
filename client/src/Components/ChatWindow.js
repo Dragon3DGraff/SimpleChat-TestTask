@@ -97,9 +97,7 @@ function ChatWindow({author, roomName}) {
 			</div>
 			<div className="Chat-users">
 				<div className="Chat-name">{roomName}
-					{/* <div className="ChatWindow-LeaveButton" onClick={onClickLeave}>X</div> */}
 				</div>
-				
 				<hr></hr>
 				<div>Online ({users.length})</div>
 				{users.map((user) => <div key={user.id+user.name} className="Chat-users">{user.name}</div> )}
@@ -107,7 +105,6 @@ function ChatWindow({author, roomName}) {
 			<div className='ChatWindow-CopyLink' onClick={onCopyLink}>Copy chat link
 				<div ref={nameofRoomRef} className="ChatWindow-HiddenLink" >{encodeURI(window.location.origin + '/:' + roomName)}</div>
 			</div>
-			
 	</div>
 	)
 }

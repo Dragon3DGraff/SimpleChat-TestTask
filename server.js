@@ -53,6 +53,7 @@ async function start() {
 			} );
 		  });
 
+		//when user connected to room send him all users and messages
 		io.on('connection', (socket) => {
 		socket.on('user connected', (roomName, author) => {
 			chatRooms.get(roomName).users.push({id: socket.id, name: author});
@@ -64,6 +65,7 @@ async function start() {
 		});
 		});
 
+		//get massages from room and sent them to all users of this room
 		io.on('connection', (socket) => {
 			socket.on('chat message', ( roomName, msg ) => {
 				socket.join(roomName);
@@ -72,6 +74,7 @@ async function start() {
 			});
 		});
 
+		//when user close browser delete him from all rooms
 		io.on('connection', (socket) => {
 			socket.on('disconnect', () => {
 				//delete user from all chats

@@ -1,8 +1,5 @@
 * { box-sizing: border-box; }
 
-
-
-
 .ChatWindow{
 	display: grid;
 	grid-template-rows: 1fr;
