@@ -1,44 +1,44 @@
-.Chats-main{
-	display: grid;
-	/* grid-template-rows: 1fr; */
-	grid-template-columns: 1fr 7fr;
+.Chats-main {
+  display: grid;
+  /* grid-template-rows: 1fr; */
+  grid-template-columns: 1fr 7fr;
 }
-.Chats-inputNewRoom{
-	width: 160px;
-	word-wrap: break-word;
-	word-break: break-all;
+.Chats-inputNewRoom {
+  width: 160px;
+  word-wrap: break-word;
+  word-break: break-all;
 }
-.Chats-chats{
-	display: flex;
-	flex-direction: row;
-	flex-flow: row;
-	flex-wrap: wrap;
+.Chats-chats {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row;
+  flex-wrap: wrap;
 }
 .Chats-main ul {
-	/* width: 250px; */
-	margin-left: 0px;
-	padding-left: 0px;
+  /* width: 250px; */
+  margin-left: 0px;
+  padding-left: 0px;
 }
 .Chats-TitleAuthor {
-	color: blue;
-	font-size: 18px;
-	font-weight: 700;
-	word-wrap: break-word;
-	word-break: break-all;
+  color: blue;
+  font-size: 18px;
+  font-weight: 700;
+  word-wrap: break-word;
+  word-break: break-all;
 }
-.Chats-existed-rooms{
-	margin-top: 10px;
-	padding-top: 5px;
+.Chats-existed-rooms {
+  margin-top: 10px;
+  padding-top: 5px;
 }
 .Chats-existed-rooms li {
-	font-size: 12px;
-	background-color: mintcream;
-	list-style-type: none;
-	padding-left: 5px;
-	width: 100%;
-	border-style: solid;
-	border-width: 1px;
-	border-color: skyblue;
-	word-wrap: break-word;
-	word-break: break-all;
+  font-size: 12px;
+  background-color: mintcream;
+  list-style-type: none;
+  padding-left: 5px;
+  width: 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: skyblue;
+  word-wrap: break-word;
+  word-break: break-all;
 }

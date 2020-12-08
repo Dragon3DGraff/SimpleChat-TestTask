@@ -1,0 +1,14 @@
+.VideoPanel-Main {
+  position: absolute;
+  left: 50px;
+  top: 60px;
+  background-color: honeydew;
+  display: flex;
+}
+
+.Local-Video {
+  width: 200px;
+  height: 200px;
+  border-style: solid;
+  border-width: 2px;
+}
