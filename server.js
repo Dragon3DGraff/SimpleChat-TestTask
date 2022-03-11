@@ -1,6 +1,7 @@
 const express = require("express");
 const config = require("config");
 const app = express();
+const { Server } = require("socket.io");
 // const app = require("https-localhost")()
 // var https = require('https');
 // var fs = require('fs')
@@ -14,7 +15,7 @@ chatRooms.set("Default room", {
 app.use(express.json());
 
 // app.use(function(req, res, next) {
-// 	res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+//   res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
 // 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 // 	next();
 //   });
@@ -31,7 +32,24 @@ async function start() {
     //   .listen(PORT, function () {
     // 	console.log('Example app listening on port 3000! Go to https://localhost:3000/')
     //   })
-    let io = require("socket.io").listen(server);
+
+    // let io = require("socket.io").listen(server);
+    // let io = require("socket.io")(server, {
+    //   allowEIO3: true, // false by default
+    //   cors: {
+    //     origin: "http://localhost:3000/",
+    //     methods: ["GET", "POST"],
+    //     credentials: true
+    //   }
+    // });
+    const io = new Server(server, {
+      allowEIO3: true, // false by default
+      cors: {
+        origin: "http://localhost:3000",
+        // methods: ["GET", "POST"],
+        credentials: true
+      }
+    });
 
     //get list of all rooms
     app.get("/rooms/", (req, res) => {

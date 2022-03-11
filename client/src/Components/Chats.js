@@ -3,6 +3,7 @@ import ChatWindow from "./ChatWindow";
 import "./Chats.css";
 import axios from "axios";
 import io from "socket.io-client";
+import { Typography } from "@mui/material";
 
 // const SOCKET_IO_URL = "http://localhost:5000";
 const SOCKET_IO_URL = "http://192.168.50.232:5000";
@@ -59,8 +60,10 @@ function Chats({ author, onRoomCreate, pathname }) {
 
   return (
     <div className="Chats-main">
+      
       <Chats-Head>
         <div>
+      <Typography></Typography>
           You joined as <span className="Chats-TitleAuthor">{author}</span>{" "}
         </div>
         <br></br>

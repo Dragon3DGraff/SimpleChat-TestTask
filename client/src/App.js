@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import "./App.css";
+// import "./App.css";
 import { Router, Route } from "react-router-dom";
 import { createBrowserHistory as createHistory } from "history";
 import Chats from "./Components/Chats";
