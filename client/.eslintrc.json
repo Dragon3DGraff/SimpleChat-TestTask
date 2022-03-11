@@ -1,0 +1,57 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "indent": [
+            "error",
+            4
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "never"
+        ],
+        "newline-after-var": ["error", "always"],
+        "react/jsx-sort-props": [
+          "error",
+          {
+            "callbacksLast": true,
+            "shorthandFirst": true,
+            "ignoreCase": false,
+            "noSortAlphabetically": false,
+            "reservedFirst": true
+          }
+        ],
+        //        "@typescript-eslint/no-extra-semi": "off",
+        "no-unsafe-optional-chaining": "error",
+        "react/jsx-curly-brace-presence": ["error", "never"],
+        "react/react-in-jsx-scope": "off"
+        //        "@emotion/jsx-import": "error"
+    }
+}
