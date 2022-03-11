@@ -43,7 +43,7 @@ async function start() {
     //   }
     // });
     const io = new Server(server, {
-      allowEIO3: true, // false by default
+      // allowEIO3: true, // false by default
       cors: {
         origin: "http://localhost:3000",
         // methods: ["GET", "POST"],

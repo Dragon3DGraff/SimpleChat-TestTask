@@ -61,9 +61,9 @@ function Chats({ author, onRoomCreate, pathname }) {
   return (
     <div className="Chats-main">
       
-      <Chats-Head>
+      {/* <Chats-Head> */}
         <div>
-      <Typography></Typography>
+        <Typography variant="h2">&#1123;&#1123; ГлаголЪ</Typography>
           You joined as <span className="Chats-TitleAuthor">{author}</span>{" "}
         </div>
         <br></br>
@@ -83,7 +83,7 @@ function Chats({ author, onRoomCreate, pathname }) {
             </li>
           ))}
         </ul>
-      </Chats-Head>
+      {/* </Chats-Head> */}
       <div className="Chats-chats">
         {connectedRooms.map((room) => (
           <ChatWindow key={room} author={author} roomName={room}></ChatWindow>

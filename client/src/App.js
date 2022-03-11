@@ -36,29 +36,29 @@ function App() {
     });
   }
 
-  async function onRoomCreate(nameOfRoom) {}
+  async function onRoomCreate(nameOfRoom) { }
 
   return (
     <div className="App">
-      <Router history={history}>
+      {/* <Router history={history}> */}
         {state.userLoggedIn ? (
           <Chats
             author={state.author}
             onRoomCreate={onRoomCreate}
-            pathname={pathname}
+          pathname={pathname}
           ></Chats>
         ) : (
-          <Route
-            path="/"
-            component={(props) => (
+          // <Route
+          //   path="/"
+          //   component={(props) => (
               <HomePage
                 userLoggedIn={state.userLoggedIn}
                 onLogin={onLogin}
               ></HomePage>
-            )}
-          />
+            // )}
+          // />
         )}
-      </Router>
+      {/* </Router> */}
     </div>
   );
 }
