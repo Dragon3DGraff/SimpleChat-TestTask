@@ -18,12 +18,12 @@
   "author": "Dragon3DGraff",
   "license": "MIT",
   "dependencies": {
-   
+    "@socket.io/redis-adapter": "^7.1.0",
     "axios": "^0.26.1",
     "config": "^3.3.7",
     "express": "^4.17.3",
-    "socket.io": "^4.4.1",
-    "@socket.io/redis-adapter": "^7.1.0"
+    "jsonwebtoken": "^8.5.1",
+    "socket.io": "^4.4.1"
   },
   "devDependencies": {
     "concurrently": "^7.0.0",

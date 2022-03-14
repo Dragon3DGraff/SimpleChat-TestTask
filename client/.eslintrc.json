@@ -7,6 +7,8 @@
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended"
+        // "plugin:import/errors",
+        // "plugin:import/warnings"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -19,11 +21,50 @@
     "plugins": [
         "react",
         "@typescript-eslint"
+        // "import"
     ],
     "rules": {
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1
+            }
+        ],
+        "no-trailing-spaces": "error",
+        "react/jsx-wrap-multilines": [
+            "error",
+            {
+                "return": "parens-new-line",
+                "prop": "parens",
+                "logical": "parens-new-line"
+            }
+            // {
+            //     "declaration": "parens-new-line",
+            //     "assignment": "parens-new-line",
+            //     "return": "parens-new-line",
+            //     "arrow": "parens-new-line",
+            //     "condition": "parens-new-line",
+            //     "logical": "parens-new-line",
+            //     "prop": "parens-new-line"
+            // }
+        ],
+        "react/jsx-closing-tag-location": "error",
+        "react/jsx-one-expression-per-line": [
+            "error",
+            {
+                "allow": "single-child"
+            }
+        ],
+        "react/jsx-curly-newline": "error",
+        "no-multi-spaces": [
+            "error",
+            {
+                "ignoreEOLComments": false
+            }
+        ],
         "indent": [
             "error",
-            4
+            2
         ],
         "linebreak-style": [
             "error",
@@ -37,20 +78,26 @@
             "error",
             "never"
         ],
-        "newline-after-var": ["error", "always"],
+        "newline-after-var": [
+            "error",
+            "always"
+        ],
         "react/jsx-sort-props": [
-          "error",
-          {
-            "callbacksLast": true,
-            "shorthandFirst": true,
-            "ignoreCase": false,
-            "noSortAlphabetically": false,
-            "reservedFirst": true
-          }
+            "error",
+            {
+                "callbacksLast": true,
+                "shorthandFirst": true,
+                "ignoreCase": false,
+                "noSortAlphabetically": false,
+                "reservedFirst": true
+            }
         ],
         //        "@typescript-eslint/no-extra-semi": "off",
         "no-unsafe-optional-chaining": "error",
-        "react/jsx-curly-brace-presence": ["error", "never"],
+        "react/jsx-curly-brace-presence": [
+            "error",
+            "never"
+        ],
         "react/react-in-jsx-scope": "off"
         //        "@emotion/jsx-import": "error"
     }
