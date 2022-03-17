@@ -63,7 +63,9 @@ function Chats({ author, onRoomCreate, pathname }: any) {
       <Typography variant="h2">&#1123;-ГлаголЪ </Typography>
 
       {/* <Chats-Head> */}
-      <Stack alignItems="center" direction='row' spacing={1}>        <Typography>You joined as</Typography>
+      <Stack alignItems="center" direction='row' spacing={1}>
+        {' '}
+        <Typography>You joined as</Typography>
         <Typography color='primary' fontWeight="bold">
           {author}
         </Typography>

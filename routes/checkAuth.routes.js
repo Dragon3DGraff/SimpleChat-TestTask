@@ -4,7 +4,7 @@ const config = require("config");
 // const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 
-router.post("/checkAuth", async (req, res) => {
+router.post("/", async (req, res) => {
   console.log('checkAuth');
   res.status(401).json({ message: "Unautherized" })
   // try {

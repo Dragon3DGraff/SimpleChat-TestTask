@@ -301,7 +301,11 @@ export default function VideoPanel({
     <div className="VideoPanel-Main">
       <div>
         {' '}
-        Video chat in <br></br> {roomName}
+        Video chat in
+        {' '}
+        <br></br>
+        {' '}
+        {roomName}
       </div>
       <div>
         <video

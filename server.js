@@ -2,6 +2,9 @@ const express = require("express");
 const config = require("config");
 const app = express();
 const { Server } = require("socket.io");
+const mongoose = require("mongoose");
+const winston = require('winston');
+const expressWinston = require('express-winston');
 // const app = require("https-localhost")()
 // var https = require('https');
 // var fs = require('fs')
@@ -12,8 +15,27 @@ chatRooms.set("Default room", {
   messages: [],
 });
 
+
+
 app.use(express.json());
-app.use("/api/check", require("./routes/checkAuth.routes"));
+app.use(expressWinston.logger({
+  transports: [
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.File({ filename: 'combined.log' }),
+  ],
+  format: winston.format.combine(
+    // winston.format.colorize(),
+    winston.format.json()
+  ),
+  meta: false,
+  msg: "HTTP  ",
+  expressFormat: true,
+  colorize: false,
+  ignoreRoute: function (req, res) { return false; }
+}));
+app.use("/api/checkAuth", require("./routes/checkAuth.routes"));
+app.use("/api/auth", require("./routes/auth.routes"));
+
 
 
 // app.use(function(req, res, next) {
@@ -26,7 +48,14 @@ const PORT = config.get("port") || 5000;
 
 async function start() {
   try {
+    await mongoose.connect(config.get("mongoURI"), {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      // useCreateIndex: true,
+    });
+
     let server = app.listen(PORT, () => console.log(`Started at ${PORT}`));
+
     // let server = https.createServer({
     // 	key: fs.readFileSync('87221199_httpsmy-app.loca.lt.key'),
     // 	cert: fs.readFileSync('87221199_httpsmy-app.loca.lt.cert')

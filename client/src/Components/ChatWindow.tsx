@@ -44,8 +44,14 @@ function ChatWindow({ author, roomName }: any) {
         className={msg.author === author ? 'messages-own' : 'message-all'}
         direction='column'
       >
-        <span className="messages-author"> {msg.author}</span>
-        <Typography color='secondary' variant='caption'> {msg.time}</Typography>
+        <span className="messages-author">
+          {' '}
+          {msg.author}
+        </span>
+        <Typography color='secondary' variant='caption'>
+          {' '}
+          {msg.time}
+        </Typography>
         <div
           className={
             msg.author === author ? 'messages-message-own' : 'messages-message'
@@ -162,7 +168,11 @@ function ChatWindow({ author, roomName }: any) {
         ) : null}
         {/* </div> */}
         {/* <hr></hr> */}
-        <div>В сети ({users.length})</div>
+        <div>
+В сети (
+          {users.length}
+)
+        </div>
         {users.map((user) => (
           <div key={user.id + user.name} className="Chat-users">
             {user.name}
