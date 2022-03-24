@@ -21,17 +21,17 @@ function ChatWindow({ author, roomName }: any) {
   const [localStream, setLocalStream] = useState(null)
 
   useEffect(() => {
-    const socket = io(SOCKET_IO_URL)
+    // const socket = io(SOCKET_IO_URL)
 
-    setChatsocket(socket)
-    socket.on('chat message', function (msg) {
-      updateMessages(msg)
-    })
-    socket.emit('user connected', roomName, author)
-    socket.on('user connected', (fromServer) => {
-      setUsers(fromServer.users)
-      updateMessages(fromServer.messages)
-    })
+    // setChatsocket(socket)
+    // socket.on('chat message', function (msg) {
+    //   updateMessages(msg)
+    // })
+    // socket.emit('user connected', roomName, author)
+    // socket.on('user connected', (fromServer) => {
+    //   setUsers(fromServer.users)
+    //   updateMessages(fromServer.messages)
+    // })
   }, [])
 
   useEffect(() => {

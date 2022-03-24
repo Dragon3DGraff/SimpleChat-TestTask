@@ -1,72 +1,37 @@
-import React, { useReducer } from 'react'
-import { Router, Route } from 'react-router-dom'
-import { createBrowserHistory as createHistory } from 'history'
+import { Route, Routes } from 'react-router-dom'
 import Chats from './Components/Chats'
 import HomePage from './Components/Auth.tsx/HomePage'
 import { useTestAuth } from 'hooks/useTestAuth'
 import { Box, LinearProgress } from '@mui/material'
-
-const history = createHistory()
+import { LoginIn } from 'Components/Auth.tsx/LoginIn'
+import { Registration } from 'Components/Auth.tsx/Registration'
 
 function App() {
-  const {isLoading, isAuth} = useTestAuth()
-
-  const reducer = (state: any, action: { type: any; payload: { userName: any } }) => {
-    switch (action.type) {
-    case 'USERLOGGEDIN':
-      return {
-        ...state,
-        userLoggedIn: true,
-        author: action.payload.userName,
-      }
-    default:
-      return state
-    }
-  }
-  const [state, dispatch] = useReducer(reducer, {
-    userLoggedIn: false,
-    author: null,
-  })
-
-  const pathname = decodeURI(window.location.pathname)
-    .replace('/', '')
-    .replace(':', '')
-
-  function onLogin(userName: any) {
-    dispatch({
-      type: 'USERLOGGEDIN',
-      payload: { userName },
-    })
-  }
-
-  async function onRoomCreate(nameOfRoom: any) {
-    console.log(nameOfRoom)
-  }
+  const {isLoading} = useTestAuth()
 
   return (
     <Box height="100vh" width="100vw">
       {isLoading && <LinearProgress />}
-      {/* <Router history={history}> */}
-      {isAuth ? (
-        <Chats
-          author={state.author}
-          pathname={pathname}
-          onRoomCreate={onRoomCreate}
-        >
-        </Chats>
-      ) : (
-      // <Route
-      //   path="/"
-      //   component={(props) => (
-        <HomePage
-          // userLoggedIn={state.userLoggedIn}
-          onLogin={onLogin}
-        />
+      <Routes>
+        <Route
+          element={
+            <HomePage />
+          } path="/" />
+        <Route
+          element={
+            <Chats />
+          } path="/chats" />
+        <Route
+          element={
+            <LoginIn />
+          } path="/login" />
+        <Route
+          element={
+            <Registration />
+          } path="/registration" />
 
-      // )}
-      // />
-      )}
-      {/* </Router> */}
+      </Routes>
+
     </Box>
   )
 }

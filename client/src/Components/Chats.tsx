@@ -2,7 +2,8 @@ import React, { useState, useEffect, ReactEventHandler, SyntheticEvent } from 'r
 import ChatWindow from './ChatWindow'
 import axios from 'axios'
 import io from 'socket.io-client'
-import { Stack, Typography } from '@mui/material'
+import { Button, Stack, Typography } from '@mui/material'
+import { useLogout } from 'hooks/useLogout'
 
 // const SOCKET_IO_URL = "http://localhost:5000";
 const SOCKET_IO_URL = 'http://192.168.50.232:5000'
@@ -14,22 +15,24 @@ function Chats({ author, onRoomCreate, pathname }: any) {
   const [rooms, setRooms] = useState<any[]>([])
   const [connectedRooms, setConnectedRooms] = useState(['Default room'])
 
+  const { sendLogout } = useLogout()
+
   useEffect(() => {
-    loadRooms()
-    //add socket when room created
-    socket.on('room created', () => {
-      loadRooms()
-    })
+    // loadRooms()
+    // //add socket when room created
+    // socket.on('room created', () => {
+    //   loadRooms()
+    // })
   }, [])
 
   useEffect(() => {
-    if (
-      pathname !== '' &&
-      rooms.includes(pathname) &&
-      !connectedRooms.includes(pathname)
-    ) {
-      setConnectedRooms([pathname, ...connectedRooms])
-    }
+    // if (
+    //   pathname !== '' &&
+    //   rooms.includes(pathname) &&
+    //   !connectedRooms.includes(pathname)
+    // ) {
+    //   setConnectedRooms([pathname, ...connectedRooms])
+    // }
   }, [rooms])
 
   const loadRooms = async () => {
@@ -64,11 +67,11 @@ function Chats({ author, onRoomCreate, pathname }: any) {
 
       {/* <Chats-Head> */}
       <Stack alignItems="center" direction='row' spacing={1}>
-        {' '}
         <Typography>You joined as</Typography>
         <Typography color='primary' fontWeight="bold">
           {author}
         </Typography>
+        <Button size='small' variant='text' onClick={() => sendLogout()}>Выйти</Button>
       </Stack>
       <br></br>
       <input
@@ -80,7 +83,6 @@ function Chats({ author, onRoomCreate, pathname }: any) {
       </input>
       <button onClick={onCreateRoomClick}>New room</button>
       <ul className="Chats-existed-rooms">
-        {' '}
         Existed rooms - click name to join
         {rooms.map((room) => (
           <li key={room} onClick={onRoomNameClick}>

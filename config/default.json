@@ -1,5 +1,6 @@
 {
 	"port": 5000, 
 	"baseUrl": "https://192.168.50.232:5000",
-	"mongoURI": "mongodb://localhost:27017/Yat_Glagol"
+	"mongoURI": "mongodb://localhost:27017/Yat_Glagol",
+	"jwtSecret": "ghbdtnctrhtn"
 }

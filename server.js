@@ -5,6 +5,8 @@ const { Server } = require("socket.io");
 const mongoose = require("mongoose");
 const winston = require('winston');
 const expressWinston = require('express-winston');
+var cors = require('cors')
+const cookieParser = require("cookie-parser");
 // const app = require("https-localhost")()
 // var https = require('https');
 // var fs = require('fs')
@@ -16,7 +18,7 @@ chatRooms.set("Default room", {
 });
 
 
-
+app.use(cookieParser());
 app.use(express.json());
 app.use(expressWinston.logger({
   transports: [
@@ -33,6 +35,7 @@ app.use(expressWinston.logger({
   colorize: false,
   ignoreRoute: function (req, res) { return false; }
 }));
+
 app.use("/api/checkAuth", require("./routes/checkAuth.routes"));
 app.use("/api/auth", require("./routes/auth.routes"));
 
