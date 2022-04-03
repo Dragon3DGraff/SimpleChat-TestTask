@@ -5,8 +5,22 @@ const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 
 router.post("/", async (req, res) => {
+  console.log('checkAuth');
   try {
+    const sess = req.session;
+    if (sess.username && sess.password) {
+      if (sess.username) {
+        console.log(sess.username);
+        res.status(200).json({ userId, userName: sess.username });
+      }
+    }
+    else {
+      console.log("No authorization");
+      return res.status(401).json({ message: "No authorization" });
+    }
+    return
     const token = req.cookies?.token;
+
     if (!token) {
       return res.status(401).json({ message: "No authorization" });
     }

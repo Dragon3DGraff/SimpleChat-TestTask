@@ -5,8 +5,11 @@ const { Server } = require("socket.io");
 const mongoose = require("mongoose");
 const winston = require('winston');
 const expressWinston = require('express-winston');
-var cors = require('cors')
-const cookieParser = require("cookie-parser");
+// const cookieParser = require("cookie-parser");
+const session = require('express-session');
+const { createClient } = require('redis')
+const connectRedis = require('connect-redis');
+const bodyParser = require('body-parser')
 // const app = require("https-localhost")()
 // var https = require('https');
 // var fs = require('fs')
@@ -17,8 +20,20 @@ chatRooms.set("Default room", {
   messages: [],
 });
 
+app.set('trust proxy', 1);
+const redisClient = createClient();
+const RedisStore = connectRedis(session)
 
-app.use(cookieParser());
+redisClient.on('error', (err) => console.log('Redis Client Error', err));
+redisClient.on('connect', function (err) {
+  console.log('Connected to redis successfully');
+});
+
+redisClient.connect();
+
+// app.use(cookieParser());
+// app.use(bodyParser.json())
+
 app.use(express.json());
 app.use(expressWinston.logger({
   transports: [
@@ -30,14 +45,27 @@ app.use(expressWinston.logger({
     winston.format.json()
   ),
   meta: false,
-  msg: "HTTP  ",
+  msg: "HTTP ",
   expressFormat: true,
   colorize: false,
   ignoreRoute: function (req, res) { return false; }
 }));
 
-app.use("/api/checkAuth", require("./routes/checkAuth.routes"));
+app.use(session({
+  store: new RedisStore({ client: redisClient }),
+  secret: 'secret$%^134',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: false, // if true only transmit cookie over https
+    httpOnly: false, // if true prevent client side JS from reading the cookie 
+    maxAge: 1000 * 60 * 10 // session max age in miliseconds
+  }
+}))
+
+
 app.use("/api/auth", require("./routes/auth.routes"));
+app.use("/api/checkAuth", require("./routes/checkAuth.routes"));
 
 
 
@@ -58,6 +86,9 @@ async function start() {
     });
 
     let server = app.listen(PORT, () => console.log(`Started at ${PORT}`));
+
+
+
 
     // let server = https.createServer({
     // 	key: fs.readFileSync('87221199_httpsmy-app.loca.lt.key'),
@@ -86,7 +117,7 @@ async function start() {
     });
 
     //get list of all rooms
-    app.get("/rooms/", (req, res) => {
+    app.get("/rooms", (req, res) => {
       let roomsObj = { rooms: [...chatRooms.keys()] };
       res.json(roomsObj);
     });

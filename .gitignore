@@ -1,4 +1,10 @@
 node_modules
+
+*.log
+
+/config/default.json
+
 87221199_httpsmy-app.loca.lt.cert
 87221199_httpsmy-app.loca.lt.key
-default.json
+
+

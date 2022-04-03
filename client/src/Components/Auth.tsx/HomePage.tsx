@@ -1,5 +1,5 @@
 import { Stack, Typography } from '@mui/material'
-import { Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function HomePage() {
   return (

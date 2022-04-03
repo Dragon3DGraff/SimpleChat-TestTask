@@ -19,12 +19,15 @@ export const useLogin = (): UseRegister => {
 
   const navigate = useNavigate()
 
-  useEffect(() => {isLoged && navigate('/chats')}, [isLoged])
+  useEffect(() => {
+    console.log(isLoged)
+    isLoged && navigate('/chats')}, [isLoged])
 
   const sendLogin = (data: RegisterData) => {
 
     setIsLoading(true)
     login(data).then(res => {
+      console.log(res)
       switch (res.status) {
       case 200:
         setIsLoged(true)

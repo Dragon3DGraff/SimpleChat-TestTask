@@ -9,7 +9,7 @@ const { check, validationResult } = require("express-validator");
 router.post(
   "/register",
   [
-    // check("name", "Enter name").exists(),
+    check("name", "Enter name").exists(),
     check("email", "Incorrect email").isEmail(),
     check("password", "Min password length is 6 symbols").isLength({ min: 6 }),
   ],
@@ -46,7 +46,10 @@ router.post(
     check("password", "Enter password").exists(),
   ],
   async (req, res) => {
+    console.log("/login")
     try {
+
+      console.log(req.sessionID);
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(400).json({
@@ -55,7 +58,15 @@ router.post(
         });
       }
       const { email, password } = req.body;
+      console.log(email, password)
       const user = await User.findOne({ email });
+      console.log(user)
+
+      // req.session.key = req.body.email
+      // if (!req.session.key) { req.session.key = req.sessionID }
+      // console.log(req.sessionID)
+      req.session.email = email
+      req.session.password = password
 
       if (!user) {
         return res.status(400).json({ message: "User not found" });
@@ -71,10 +82,10 @@ router.post(
         expiresIn: "1h",
       });
 
-      res.clearCookie("token");
-      res.cookie("token", token, { httpOnly: true });
+      // res.clearCookie("token");
+      // res.cookie("token", token, { httpOnly: true });
 
-      res.json({ userId: user.id, userName: user.name });
+      res.status(200).json({ userId: user.id, userName: user.name }).end();
     } catch (error) {
       res.status(500).json({ message: "ERROR" });
       console.log(error);
